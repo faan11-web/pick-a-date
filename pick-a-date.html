@@ -1,0 +1,36 @@
+<link rel="import" href="../polymer/polymer-element.html">
+
+<dom-module id="pick-a-date">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <h2>Hello [[prop1]]!</h2>
+  </template>
+
+  <script>
+    /**
+     * `pick-a-date`
+     * 
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class PickADate extends Polymer.Element {
+      static get is() { return 'pick-a-date'; }
+      static get properties() {
+        return {
+          prop1: {
+            type: String,
+            value: 'pick-a-date'
+          }
+        };
+      }
+    }
+
+    window.customElements.define(PickADate.is, PickADate);
+  </script>
+</dom-module>
