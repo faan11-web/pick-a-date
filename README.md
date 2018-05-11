@@ -5,6 +5,9 @@
 
 ![alt text](images/date.png)
 
+Whenever you need to open this calendar relaying on the click event, you have to use the following methods:
+ event.preventDefault(); event.stopPropagation() 
+
 ## Install the Polymer-CLI
 
 First, make sure you have the [Polymer CLI](https://www.npmjs.com/package/polymer-cli) installed. Then run `polymer serve` to serve your element locally.
