@@ -167,11 +167,17 @@
           date: {
             type: Date,
             notify:true
+          },
+          opened:{
+            type:Boolean,
+            notify:true,
+
           }
         };
       }
       static get observers() {
         return [
+          '_changeOpened(opened)',
           // Observer method name, followed by a list of dependencies, in parenthesis
           'pickADate(monthsFull,monthsShort,weekdaysFull,weekdaysShort,showMonthsShort,showWeekdaysFull,todayButton,clearButton,closeButton,labelMonthNext,labelMonthPrev,labelMonthSelect,labelYearSelect,format,formatSubmit,hiddenPrefix,hiddenSuffix,hiddenName,editable,selectYears,selectMonths,firstDay,min,max,disable,closeOnSelect,closeOnClear)'
         ]
@@ -181,18 +187,16 @@
         /*this.picker = $(this.$.container).pickadate({
         });*/
       }
-      open(e){
-        /*  _.............. -.-'''''' */
-        if (e !== undefined){
-          e.stopPropagation();
-          e.preventDefault();
+      _changeOpened(opened){
+        if (opened !== undefined){
+          if (opened == true){
+            this.picker.pickadate('picker').open();
+          }else{
+            this.picker.pickadate('picker').close();
+          }
         }
-
-        this.picker.pickadate('picker').open();
-
-
-      /* */
       }
+
       pickADate(monthsFull,monthsShort,weekdaysFull,weekdaysShort,showMonthsShort,showWeekdaysFull,todayButton,clearButton,closeButton,labelMonthNext,labelMonthPrev,labelMonthSelect,labelYearSelect,format,formatSubmit,hiddenPrefix,hiddenSuffix,hiddenName,editable,selectYears,selectMonths,firstDay,min,max,disable,closeOnSelect,closeOnClear){
         var me = this;
         this.picker = $(this.$.container).pickadate({
@@ -225,19 +229,16 @@
            closeOnSelect:this.closeOnSelect,
            closeOnClear:this.closeOnClear,
            onStart: function() {
-             console.log('Hello there :)')
            },
            onRender: function() {
-             console.log('Whoa.. rendered anew')
            },
            onOpen: function() {
-             console.log('Opened up')
+             me.opened = true;
            },
            onClose: function() {
-             console.log('Closed now')
+             me.opened = false;
            },
            onStop: function() {
-             console.log('See ya.')
            },
            onSet: function(context) {
              let value = me.picker.pickadate('picker').get();
@@ -247,7 +248,7 @@
              }else{
                me.date = value;
              }
-             console.log(me.date);
+             //console.log(me.date);
            }
          });
       }

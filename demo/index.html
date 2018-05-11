@@ -24,8 +24,8 @@
       <h3>Basic pick-a-date demo</h3>
       <demo-snippet>
         <template>
-          <paper-button onClick="document.getElementById('date').open(event)"> Hello!</paper-button>
-          <pick-a-date id="date"></pick-a-date>
+          <paper-button onClick="document.getElementById('date').opened = true; event.preventDefault(); event.stopPropagation()"> Hello!</paper-button>
+          <pick-a-date id="date"  ></pick-a-date>
         </template>
       </demo-snippet>
     </div>

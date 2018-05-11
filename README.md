@@ -1,6 +1,9 @@
+[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/faan11/pick-a-date)
+
+
 # \<pick-a-date\>
 
-
+![alt text](images/date.png)
 
 ## Install the Polymer-CLI
 
